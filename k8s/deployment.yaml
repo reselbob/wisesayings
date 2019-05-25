@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: wisesayings
-        image: reselbob/wisesayings:v0.1
+        image: reselbob/wisesayings:v0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
