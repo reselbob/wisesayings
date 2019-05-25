@@ -5,7 +5,7 @@ as one that would be found in a fortune cookie.
 
 const http = require('http');
 
-const port = process.env.SAYINGS_PORT || 3033;
+const port = process.env.SAYINGS_PORT || 3000;
 
 
 function loadSayingsSync(){

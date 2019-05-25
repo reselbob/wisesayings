@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wisesayings
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wisesayings
+    spec:
+      containers:
+      - name: wisesayings
+        image: reselbob/wisesayings:v0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SERVICE_NAME
+          value: "frontend-prod"
+        - name: UPSTREAM_URI
+          value: "http://middleware/"
+---

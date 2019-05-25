@@ -5,7 +5,7 @@ const rp = require('request-promise');
 
 const port = process.env.SERVICE_PORT || 3034;
 
-const sayingsPort = process.env.SAYINGS_PORT || 3033;
+const sayingsPort = process.env.SAYINGS_PORT || 3000;
 
 
 
