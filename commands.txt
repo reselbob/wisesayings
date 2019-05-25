@@ -1,5 +1,14 @@
 #Docker
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -a -q)
+
 docker build -t reselbob/wisesayings:v0.1 .
 
 docker run -d -p 3001:3000 reselbob/wisesayings:v0.1
 
+#Dubernetes
+
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
