@@ -13,4 +13,4 @@ docker run -d -p 3001:3000 reselbob/wisesayings:v0.2
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 
-kubectl run nginx --image=nginx --replicas=1
+kubectl run -it deployment-for-testing --image=busybox /bin/sh
