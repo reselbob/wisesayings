@@ -3,11 +3,10 @@
 This is a small Node.js web server application that emits a wise saying on
 demand via HTTP
 
-
 Also, this repo has an example that allows Wise Saying to be
 run as a Kubernetes deployment and service.
 
-The Kubernetes deployment and service is to be found in
+The Kubernetes deployment and service are to be found in
 
 `./k8s`
 
