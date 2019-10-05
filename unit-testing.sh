@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cd app && npm test
+cd app && npm install && npm test
