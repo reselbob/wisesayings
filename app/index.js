@@ -19,22 +19,33 @@ function loadSayingsSync(){
 
 const sayings = loadSayingsSync();
 
-function getRandomSaying(){
+const getRandomSaying = () =>{
     max = sayings.length;
     min = 0;
 
     const idx =  Math.floor(Math.random()*(max-min+1)+min);
     return sayings[idx];
-}
+};
 
 const handleRequest = function(request, response) {
-    const str = JSON.stringify(getRandomSaying(), null, 4);
+
+    const obj = getRandomSaying();
+    obj.date = new Date()
+    const str = JSON.stringify(obj, null, 4);
+    response.setHeader('content-type', 'application/json');
     response.writeHead(200);
     response.end(str);
-    console.log({saying:str,date:new Date()});
+    console.log(str);
 };
 
 const server = http.createServer(handleRequest);
 server.listen(port, ()=>{
     console.log(`Listening on port ${port}, started at : ${new Date()}`);
 });
+
+const shutdown = () => {
+    console.log(`Wisesayings server shutting down at ${new Date()}`);
+    server.close()
+};
+
+module.exports = {server, getRandomSaying, shutdown};

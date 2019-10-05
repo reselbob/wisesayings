@@ -30,6 +30,5 @@ const handleRequest = function(req, res) {
 
 const server = http.createServer(handleRequest);
 server.listen(port, ()=>{
-    console.log(`Listening on port ${port}, started at : ${new Date()}`);
     console.log(`Saying port is ${sayingsPort}, started at : ${new Date()}`);
 });
