@@ -1,30 +1,42 @@
 # Wise Sayings
 
-This is a small Node.js web server application that emits a wise saying on
-demand via HTTP
+This is a small Node.js web server application that emits a wise saying on demand via HTTP
 
-Also, this repo has an example that allows Wise Saying to be
-run as a Kubernetes deployment and service.
+## Set up
 
-The Kubernetes deployment and service are to be found in
+**Step 1:** Go to the Katacoda Ubuntu Playground
 
-`./k8s`
+`https://katacoda.com/courses/ubuntu/playground`
 
-## Installation
+**Step 2:** Clone the code from GitHub
+
+`git clone https://github.com/reselbob/wisesayings.git`
+
+**Step 3:** Navigate to the working directory
+
+`cd wisesayings`
+
+## Running as a standalone Node.JS application
 
 To install the application to run on you local machine
 
+**Step 1:** Navigate to the application directory
+
 `cd ./app`
+
+**Step 2:** Install the application dependenices
 
 `npm install`
 
-To get it running type:
+**Step 3:** Start the application
 
 `node index.js`
 
-Then to get a Wise Saying,
+**Step 4:** Get a Wise Saying in a new terminal window.
 
-`curl locahost:3000`
+Open a second terminal window, then type,
+
+`curl localhost:3000`
 
 You'll get output similar to the following:
 
@@ -35,10 +47,62 @@ You'll get output similar to the following:
 }
 ```
 
-## Running the application's tests
+**Step 4:** Exit the application in the first terminal window.
 
-Make sure you're in the application's source code directory, `./app`.
+`ctrl + C`
 
-Then run:
 
-`npm test`
+## Running as a Docker Container
+
+**Step 1:** Take a look at Dockerfile
+
+`cat Dockerfile`
+
+**Step 2:** Build the container image
+
+`docker build -t wisesayings:beta .`
+
+**Step 3:** Run the container
+
+`docker run -d -p 3000:3000 wisesayings:beta`
+
+**Step 4:** Confirm the container is running
+
+`docker ps -a`
+
+Copy the container ID, you'll need it later.
+
+**Step 5:** Call the application over HTTP using `curl`.
+
+`curl localhost:3000`
+
+**Step 6:** Kill the container.
+
+`docker kill <CONTAINER_ID>`
+
+**Step 7:** Remove the container.
+
+`docker rm -f <CONTAINER_ID>`
+
+**Step 8:** Remove the container image
+
+Find the container image ID
+
+`docker images`
+
+Then remove  the image
+
+`docker rmi -f <CONTAINER_IMAGE_ID>`
+
+**Step 9:** Confirm the image is gone.
+
+`docker images`
+
+## Running on Kubernetes (Optional)
+
+This repo has an example that allows Wise Saying to be
+run as a Kubernetes deployment and service.
+
+The Kubernetes deployment and service are to be found in
+
+`./k8s`
